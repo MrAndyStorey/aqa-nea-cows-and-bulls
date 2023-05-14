@@ -11,8 +11,8 @@ If a digit is in the randomly-generated number and is in the same position in th
 The player has won the game when they have correctly guessed the four digit randomly-generated number. A record is kept of the number of guesses it took to guess the correct number.
 
 ## Extention tasks
-The code includes functionality that solves the following extention tasks:
-* Highlight the number of cows and bulls text when giving the user their feedback e.g. 1234 - [Red Text]2 bulls, [Green Text]0 cows)
+The code includes functionality that solves the following extention tasks that are not in the original specification:
+* Highlight the number of cows and bulls text when giving the user their feedback e.g. 1234 - <font color="red">2 bulls</font>, <font color="green">0 cows</font>)
 * When the user gets the number correct, let them play again instead of exiting the program.
 * Tell the user if they have already entered a four-digit number.  Don’t count this as one of their guesses, but they do have them re-enter.
 * Add a new command for the user to LIST all of their guesses so far, along with the number of cows and bulls for each guess
