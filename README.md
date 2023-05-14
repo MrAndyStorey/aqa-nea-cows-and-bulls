@@ -12,7 +12,7 @@ The player has won the game when they have correctly guessed the four digit rand
 
 ## Extention tasks
 The code includes functionality that solves the following extention tasks that are not in the original specification:
-* Highlight the number of cows and bulls text when giving the user their feedback e.g. 1234 - <font color="red">2 bulls</font>, <font color="green">0 cows</font>)
+* Highlight the number of cows and bulls text in RED and GREEN when giving the user their feedback.
 * When the user gets the number correct, let them play again instead of exiting the program.
 * Tell the user if they have already entered a four-digit number.  Don’t count this as one of their guesses, but they do have them re-enter.
 * Add a new command for the user to LIST all of their guesses so far, along with the number of cows and bulls for each guess
