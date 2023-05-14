@@ -1,4 +1,5 @@
 import random
+import colorama
 
 def output_list(list_of_guesses):
     for guess in list_of_guesses:
@@ -77,50 +78,56 @@ print("***********************************************")
 print("*          Welcome to Cows and Bulls          *")
 print("***********************************************")
 
-#Create the number the user is trying to guess
-generated = create_four_digit_number()
-print("Randomly generated number:", generated)
+play_again = "Y"
 
-#Setting up the local variables
-user_input = ""
-guesses = 0
-guess_list = []
-hint_provided = 0
+while play_again == "Y":
 
-#Main game loop, only stops when EXIT is input or the guess is correct
-while user_input != "EXIT" and user_input != generated:
-    
-    #Get validated user input
-    user_input = get_guess(guess_list)
-    
-    #Process menu options before a user guess
-    if user_input == "LIST":
-        output_list(guess_list)
+    #Create the number the user is trying to guess
+    generated = create_four_digit_number()
+    print("Randomly generated number:", generated)
 
-    elif user_input == "HINT":
-        if hint_provided == 0:
-            hint_provided = generated[random.randint(0, 3)]
-            print(hint_provided, "is in the number!")
-        else:
-            print("Nice try, only one hint per game!")
+    #Setting up the local variables
+    user_input = ""
+    guesses = 0
+    guess_list = []
+    hint_provided = 0
 
-    elif user_input == "EXIT":
-        print("Number was", generated)
+    #Main game loop, only stops when EXIT is input or the guess is correct
+    while user_input != "EXIT" and user_input != generated:
         
-    else:
-        cows = check_for_cows(generated, user_input)
-        bulls = check_for_bulls(generated, user_input)
-        guesses = guesses + 1
+        #Get validated user input
+        user_input = get_guess(guess_list)
+        
+        #Process menu options before a user guess
+        if user_input == "LIST":
+            output_list(guess_list)
 
-        if user_input == generated:
-            print("Your guess was correct!")
-        else:
-            #Guess/Stats added to the list, used when the user inputs LIST and for input validation
-            guess_list.append([user_input, cows, bulls]) 
+        elif user_input == "HINT":
+            if hint_provided == 0:
+                hint_provided = generated[random.randint(0, 3)]
+                print(hint_provided, "is in the number!")
+            else:
+                print("Nice try, only one hint per game!")
+
+        elif user_input == "EXIT":
+            print("Number was", generated)
             
-            #Give feedback to the user
-            print(user_input, "-", cows, "cows,", bulls, "bulls")
+        else:
+            cows = check_for_cows(generated, user_input)
+            bulls = check_for_bulls(generated, user_input)
+            guesses = guesses + 1
 
-    
-print("You took", guesses, "guesses")
+            if user_input == generated:
+                print("Your guess was correct!")
+            else:
+                #Guess/Stats added to the list, used when the user inputs LIST and for input validation
+                guess_list.append([user_input, cows, bulls]) 
+                
+                #Give feedback to the user
+                print(user_input, "-", colorama.Fore.RED, cows, "cows,", colorama.Fore.GREEN, bulls, "bulls", colorama.Style.RESET_ALL)
 
+        
+    print("You took", guesses, "guesses")
+
+    #Ask if the player wants to play again
+    play_again = input("Would you like to play again (Y)es or (N)o?")[0].upper()
